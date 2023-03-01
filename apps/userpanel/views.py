@@ -49,9 +49,9 @@ class LoginAPIView(generics.CreateAPIView):
                 "username": request.data["username"],
                 "password":request.data["password"]
             }
-            # headers={ 'Authorization': 'eyJ1c2VyX2lkljoiMTYwMzUzNClslmV4cCl6MTYwODI3MDkxNn0' }
-            # response = requests.post(url, json = payload,headers=headers)
-            if True:
+            headers={ 'Authorization': 'eyJ1c2VyX2lkljoiMTYwMzUzNClslmV4cCl6MTYwODI3MDkxNn0' }
+            response = requests.post(url, json = payload,headers=headers)
+            if response:
                 if SwooshUser.objects.filter(ps_id= payload["username"]).exists():
                     user = SwooshUser.objects.get(ps_id=payload["username"])    
                 else:
